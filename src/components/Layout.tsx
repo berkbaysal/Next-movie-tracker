@@ -1,0 +1,52 @@
+import  Router  from 'next/router';
+import React, { useEffect, useState } from 'react'
+
+const Layout = ({children}) => {
+
+    const [authenticated, setAuthenticated] = useState<boolean>(false)
+
+    async function checkAuth() {
+        const res = await fetch("api/checkAuth", {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const resStatus = await res.status;
+        if (resStatus !== 200) { return false }
+        else { return true }
+    }
+
+    useEffect(() => {
+        async function redirect() {
+            const auth = await checkAuth()
+            if (Router.pathname !== "/login" && Router.pathname !== "/register") {
+                if (!auth) {
+                    Router.push("/login");
+                }
+                else{
+                    setAuthenticated(false);
+                }
+            }
+            else {
+                if (await checkAuth()) {
+                    Router.push("/home");
+                }
+                else{
+                    setAuthenticated(false);
+                }
+            }
+        }
+        redirect();
+    }, [])
+
+
+    if(!authenticated){
+        return <div>Loading...</div>
+    }
+
+    return (
+        <div>{children}</div>
+    )
+}
+
+export default Layout

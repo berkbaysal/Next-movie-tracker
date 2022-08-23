@@ -2,7 +2,6 @@ import { Button, TextField } from '@mui/material'
 import Router from 'next/router';
 import React, { useEffect, useState } from 'react'
 import loginStyles from "../styles/Login.module.css"
-import { checkIfUserNameExists } from '../util/dbFunctions';
 
 const Login = () => {
 

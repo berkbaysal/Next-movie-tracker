@@ -1,6 +1,6 @@
 import { NextApiResponse } from "next";
 import { UserRequest } from "../../util/interfaces";
-import  {findByUserName,checkIfUserNameExists} from "../../util/dbFunctions"
+import  {findByUserName} from "../../util/dbFunctions"
 import cookie from "cookie"
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -18,7 +18,7 @@ export default async function registerNewUser(req: UserRequest, res:NextApiRespo
         }
         else{
             if(await bcrypt.compare(req.body.password, user.password)){
-                const accessToken = jwt.sign({id: user._id.toString()}, process.env.ACCESS_TOKEN_SECRET,{expiresIn:"1h"});
+                const accessToken = jwt.sign({id: user._id.toString()}, process.env.ACCESS_TOKEN_SECRET,{expiresIn:"7h"});
                 res.setHeader('Set-Cookie',cookie.serialize("accessToken",accessToken,{
                     httpOnly:true,
                     secure:process.env.NODE_ENV !== "development",

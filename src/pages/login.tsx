@@ -1,7 +1,7 @@
 import { Button, TextField } from '@mui/material'
 import Router from 'next/router';
 import React, { useState } from 'react'
-import loginStyles from "../styles/Login.module.css"
+import styles from "../styles/Login.module.css"
 
 
 const Login = () => {
@@ -25,11 +25,11 @@ const Login = () => {
     }
 
     return (
-        <div className={loginStyles.loginPage}>
-            <form className={loginStyles.loginForm}>
+        <div className={styles.loginPage}>
+            <form className={styles.loginForm}>
                     <TextField
                         label='Username'
-                        className={loginStyles.formElement}
+                        className={styles.formElement}
                         size="small"
                         required
                         value={username}
@@ -39,15 +39,15 @@ const Login = () => {
                     <TextField
                         label='Password'
                         type="password"
-                        className={loginStyles.formElement}
+                        className={styles.formElement}
                         size="small"
                         required
                         value={password}
                         autoComplete = "current-password"
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button variant='contained' className={loginStyles.formElement} onClick={() => { handleClick() }}>Log In</Button>
-                <div className={loginStyles.formText}>Don't have an account? <span className={loginStyles.link} onClick={() => { Router.push("/signup") }}>Click here.</span></div>
+                    <Button variant='contained' className={styles.formElement} onClick={() => { handleClick() }}>Log In</Button>
+                <div className={styles.formText}>Don&apos;t have an account? <span className={styles.link} onClick={() => { Router.push("/signup") }}>Click here.</span></div>
             </form>
         </div>
     )
