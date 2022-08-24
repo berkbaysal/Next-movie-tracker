@@ -1,7 +1,8 @@
-import  Router  from 'next/router';
+import Router from 'next/router';
 import React, { useEffect, useState } from 'react'
+import Navbar from './Navbar';
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
 
     const [authenticated, setAuthenticated] = useState<boolean>(false)
 
@@ -23,16 +24,16 @@ const Layout = ({children}) => {
                 if (!auth) {
                     Router.push("/login");
                 }
-                else{
-                    setAuthenticated(false);
+                else {
+                    setAuthenticated(true);
                 }
             }
             else {
                 if (await checkAuth()) {
                     Router.push("/home");
                 }
-                else{
-                    setAuthenticated(false);
+                else {
+                    setAuthenticated(true);
                 }
             }
         }
@@ -40,12 +41,15 @@ const Layout = ({children}) => {
     }, [])
 
 
-    if(!authenticated){
+    if (!authenticated) {
         return <div>Loading...</div>
     }
 
     return (
-        <div>{children}</div>
+        <div>
+            <Navbar />
+            {children}
+        </div>
     )
 }
 

@@ -13,10 +13,6 @@
     flex-direction: column;
     min-width: 250px;
 }
-.formElement{
-    margin-bottom: 1rem;     
-}
-
 .formText{
     font-size: 0.8rem;
     text-align: center;
