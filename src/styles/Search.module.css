@@ -1,5 +1,5 @@
 .searchResults{
-    border: 3px solid black;
+    border: 1px solid #F25C05;
     background-color: white;
     position: absolute;
     height: auto;
@@ -11,15 +11,32 @@
     display: flex;
     padding: 0.5rem;
     border-bottom: 1px solid #F25C05;
-    height: 10rem;
+    height: 7rem;
+    cursor: pointer;
     
+}
+.searchResult:hover{
+    background-color: #ffd4bc;
 }
 .poster{
     display: block;
     flex-shrink: 0;
-    width: 94px;
-    height: 141px;
+    width: 60px;
     position: relative;
+}
+.overlayTag{
+    position: absolute;
+    bottom:0;
+    left:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    height: 0.9rem;
+    width: 100%;
+    font-size: 0.6rem;
+    text-transform: uppercase;
 }
 .movieInfo{
     display: flex;
@@ -28,10 +45,15 @@
 }
 .movieTitle{
     font-weight: bold;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .movieOverview{
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     font-size: 0.9rem;
     text-overflow: ellipsis;
@@ -44,4 +66,10 @@
     align-items: center;
     justify-content: center;
     background-color: #F25C05;
+}
+.mediaType{
+    color: #333;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 0.9rem;
 }

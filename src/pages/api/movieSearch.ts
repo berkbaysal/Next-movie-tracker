@@ -8,7 +8,7 @@ require("dotenv").config()
         language: "en-US",
         query: req.body.query,
     }
-    const fetchRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${params.api_key}&query=${params.query}`)
+    const fetchRes = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${params.api_key}&query=${params.query}`)
     const json = await fetchRes.json()
     res.json(json);
 })

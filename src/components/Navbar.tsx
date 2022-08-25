@@ -1,5 +1,5 @@
 import { TextField, ThemeProvider } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from "../styles/Navbar.module.css"
 import { searchBarTheme } from "../static/theme"
 import Search from './Search'
@@ -10,19 +10,29 @@ import Search from './Search'
 const Navbar = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>("")
+  const [searchResultsVisible, setSearchResultsVisible] = useState<boolean>(false)
+  const searchBar = useRef(null);
+
+  useEffect(() => {
+    console.log(document.activeElement === searchBar.current);
+  }, [])
 
   return (
     <nav className={styles.navbarContainer}>
-      <div className={styles.searchBarWrapper}>
+      <div className={styles.searchBarWrapper}
+        onFocus={() => setSearchResultsVisible(true)}
+        onBlur={() => setSearchResultsVisible(false)}>
         <ThemeProvider theme={searchBarTheme}>
           <TextField variant='outlined'
             size='small'
             placeholder='Search...'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            inputRef={searchBar}
           />
         </ThemeProvider>
-          <Search searchTerm={searchTerm}/>
+        {(searchTerm.length > 0 && searchResultsVisible)
+          && <Search searchTerm={searchTerm} />}
       </div>
     </nav>
   )
