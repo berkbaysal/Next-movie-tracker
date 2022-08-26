@@ -4,9 +4,6 @@ import styles from "../styles/Navbar.module.css"
 import { searchBarTheme } from "../static/theme"
 import Search from './Search'
 
-
-
-
 const Navbar = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>("")
@@ -21,7 +18,7 @@ const Navbar = () => {
     <nav className={styles.navbarContainer}>
       <div className={styles.searchBarWrapper}
         onFocus={() => setSearchResultsVisible(true)}
-        onBlur={() => setSearchResultsVisible(false)}>
+        >
         <ThemeProvider theme={searchBarTheme}>
           <TextField variant='outlined'
             size='small'
@@ -32,7 +29,7 @@ const Navbar = () => {
           />
         </ThemeProvider>
         {(searchTerm.length > 0 && searchResultsVisible)
-          && <Search searchTerm={searchTerm} />}
+          && <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}
       </div>
     </nav>
   )

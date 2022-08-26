@@ -7,9 +7,9 @@ const Layout = ({ children }) => {
     const [authenticated, setAuthenticated] = useState<boolean>(false)
 
     async function checkAuth() {
-        const res = await fetch("api/checkAuth", {
+        const res = await fetch("http://localhost:3000/api/checkAuth", {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }
         });
         const resStatus = await res.status;
@@ -48,7 +48,9 @@ const Layout = ({ children }) => {
     return (
         <div>
             <Navbar />
-            {children}
+            <div style={{maxWidth:"1400px",margin:"auto"}}>
+                {children}
+            </div>   
         </div>
     )
 }

@@ -8,11 +8,11 @@ export const authenticated = (fn:NextApiHandler) => async (req:NextApiRequest, r
             return fn(req,res);
         }
         res.status(401).json({message:"Sorry you are not authenticated"});
+       
     })
 }
 
 export default authenticated(async function confirmAuth(req: NextApiRequest, res: NextApiResponse) {
-    console.log("verifying token")
     res.status(200).json({message:"User valid"});
 })
 

@@ -1,0 +1,57 @@
+.topSection{
+    margin-top: 3rem;
+    display: flex;
+    width: 100%;
+}
+.poster{
+    width: 20%;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+.mainInfo{
+    padding: 0 4rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-weight: 700;
+    font-size: 2rem;
+
+}
+.originalTitle{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color:#333;
+    font-style: italic;
+}
+.releaseDate{
+    font-weight: 400;
+    color:#333;
+}
+.subTitle{
+    padding: 0.5rem 0 1rem 0;
+    font-weight: 400;
+}
+.tagline{
+    color:#333;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+.links{
+    font-size: 2rem;
+}
+.link{
+    margin-right: 1rem;
+}
+.overview{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-top: 1rem;
+}
+.overviewTitle{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
