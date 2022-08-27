@@ -4,7 +4,6 @@ import { MovieData } from '../util/interfaces'
 import styles from "../styles/InfoTopDisplay.module.css"
 import {SiImdb} from "react-icons/si"
 import {BsCursor} from "react-icons/bs"
-import { url } from 'inspector'
 
 interface IProps {
     filmInfo: MovieData

@@ -5,6 +5,7 @@ import  Router  from 'next/router'
 import SearchResultPerson from './SearchResultPerson'
 import SearchResultTvSeries from './SearchResultTvSeries'
 import SearchResultMovie from './SearchResultMovie'
+import { validateResponse } from '../util/utilFunctions'
 
 const MAX_RESULTS_DISPLAYED = 8;
 
@@ -25,6 +26,7 @@ const Search = ({ searchTerm, setSearchTerm }: IProps) => {
             },
             body: JSON.stringify({ query: searchTerm })
         });
+        validateResponse(res);
         const searchResults = await res.json();
         setSearchResults(updateSearchResults(searchResults));
     }

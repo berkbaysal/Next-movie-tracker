@@ -4,7 +4,7 @@ import CastDisplay from '../../components/CastDisplay'
 import InfoTopDisplay from '../../components/InfoTopDisplay'
 import Layout from '../../components/Layout'
 import {MovieData,CreditsData, PersonImages} from "../../util/interfaces"
-import { validateResponseServerSide } from '../../util/utilFunctions'
+import { validateResponse } from '../../util/utilFunctions'
 
 interface IProps{
     filmInfo: MovieData
@@ -30,7 +30,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
             cookie: cookie!
         }      
     });
-    validateResponseServerSide(await resFilmInfo,ctx);
+    validateResponse(await resFilmInfo,ctx);
     const jsonFilmInfo = await resFilmInfo.json()
 
     const creditsInfo = await fetch("http://localhost:3000/api/credits?id=" + ctx.query.id,{
@@ -38,7 +38,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
             cookie: cookie!
         }      
     });
-    validateResponseServerSide(await creditsInfo,ctx);
+    validateResponse(await creditsInfo,ctx);
     const jsonCreditsInfo:CreditsData = await creditsInfo.json()
 
     let imageArray:PersonImages[] = []
