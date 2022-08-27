@@ -1,0 +1,44 @@
+.castSlider{
+    width: 100%;
+    position: relative;
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+}
+.rightArrow{
+    display: flex;
+    height: 100%;
+    background-color: white;
+    top: 0;
+    right: 0;
+    font-size: 4rem;
+    align-items: center;
+    justify-content: flex-end;
+    width: 5%;
+    transition: 0.5s;
+    position: absolute;
+    
+}
+.leftArrow{
+    display: flex;
+    height: 100%;
+    background-color: white;
+    top: 0;
+    left: 0;
+    font-size: 4rem;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 10;
+    width: 5%;
+    transition: 0.5s;
+    position: absolute;
+}
+.viewport{
+    width: 90%;
+    overflow: hidden;
+    flex-grow: 1;
+}
+.castMembers{
+    display: flex;
+    transition: 1s;
+}

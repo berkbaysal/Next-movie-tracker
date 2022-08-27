@@ -1,22 +1,20 @@
 import { NextPageContext } from 'next'
 import React from 'react'
-import CastDisplay from '../../components/CastDisplay'
 import InfoTopDisplay from '../../components/InfoTopDisplay'
 import Layout from '../../components/Layout'
 import {MovieData,CreditsData, PersonImages} from "../../util/interfaces"
 import { validateResponse } from '../../util/utilFunctions'
+import CastSlider from '../../components/CastSlider'
 
 interface IProps{
     filmInfo: MovieData
     creditInfo: CreditsData
-    imageInfo: PersonImages[]
 }
-
-const Movie = ({filmInfo, creditInfo,imageInfo}:IProps) => {
+const Movie = ({filmInfo, creditInfo}:IProps) => {
     return (
         <Layout>
             <InfoTopDisplay filmInfo={filmInfo}/>
-            <CastDisplay creditInfo={creditInfo} imageInfo={imageInfo}/>
+            <CastSlider creditInfo={creditInfo}/>
         </Layout>
     )
 }
@@ -64,7 +62,6 @@ export async function getServerSideProps(ctx: NextPageContext) {
         props: {
             filmInfo: jsonFilmInfo,
             creditInfo: jsonCreditsInfo,
-            imageInfo: imageArray
         }
     }
 }

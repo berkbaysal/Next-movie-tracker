@@ -26,6 +26,7 @@ const Navbar = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             inputRef={searchBar}
+            autoComplete="off"
           />
         </ThemeProvider>
         {(searchTerm.length > 0 && searchResultsVisible)
