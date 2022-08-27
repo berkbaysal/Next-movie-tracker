@@ -1,3 +1,10 @@
+.castContainer{
+    margin-top:2rem;
+}
+.mainTitle{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 .castSlider{
     width: 100%;
     position: relative;
@@ -5,15 +12,20 @@
     display: flex;
     align-items: center;
 }
+.arrowContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
 .rightArrow{
     display: flex;
     height: 100%;
     background-color: white;
     top: 0;
     right: 0;
-    font-size: 4rem;
-    align-items: center;
+    font-size: 3rem;
     justify-content: flex-end;
+    z-index: 10;
     width: 5%;
     transition: 0.5s;
     position: absolute;
@@ -25,8 +37,7 @@
     background-color: white;
     top: 0;
     left: 0;
-    font-size: 4rem;
-    align-items: center;
+    font-size: 3rem;
     justify-content: flex-start;
     z-index: 10;
     width: 5%;

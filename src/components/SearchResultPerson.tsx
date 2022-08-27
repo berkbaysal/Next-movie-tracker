@@ -18,7 +18,9 @@ const SearchResultPerson = ({result}:IProps) => {
         if(json.profiles[0]){setImgSrc("https://image.tmdb.org/t/p/w92"+json.profiles[0].file_path)}
     }
 
-    useEffect(()=>{getPersonImagePath(result.id)},[])
+    useEffect(()=>{
+        setImgSrc(defaultPersonImage);
+        getPersonImagePath(result.id)},[result])
     return (
         <div className={styles.searchResult}>
             <div className={styles.poster}>

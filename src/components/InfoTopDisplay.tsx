@@ -7,9 +7,10 @@ import {BsCursor} from "react-icons/bs"
 
 interface IProps {
     filmInfo: MovieData
+    director: string []
 }
 
-const InfoTopDisplay = ({ filmInfo }: IProps) => {
+const InfoTopDisplay = ({ filmInfo,director }: IProps) => {
     const releaseDate = new Date(filmInfo.release_date).getFullYear()
     return (
         <div className={styles.topSection}>
@@ -33,6 +34,7 @@ const InfoTopDisplay = ({ filmInfo }: IProps) => {
                     {filmInfo.imdb_id && <a href={"https://www.imdb.com/title/"+filmInfo.imdb_id}><SiImdb className={styles.link}/></a>}
                     {filmInfo.homepage && <a href={filmInfo.homepage}><BsCursor className={styles.link}/></a>}
                 </div>
+                {director.length>0 && <div className={styles.director}><strong>Directed By: </strong>{director.join(", ")}</div>}
                 <div className={styles.overview}>
                     <div className={styles.overviewTitle}>Overview:</div>
                     <div>{filmInfo.overview}</div>

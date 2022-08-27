@@ -11,9 +11,15 @@ interface IProps{
     creditInfo: CreditsData
 }
 const Movie = ({filmInfo, creditInfo}:IProps) => {
+    const director = []
+    creditInfo.crew.forEach(crewMember=>{
+        if(crewMember.job === "Director"){
+            return director.push(crewMember.name);
+        }
+    })
     return (
         <Layout>
-            <InfoTopDisplay filmInfo={filmInfo}/>
+            <InfoTopDisplay filmInfo={filmInfo} director={director}/>
             <CastSlider creditInfo={creditInfo}/>
         </Layout>
     )
