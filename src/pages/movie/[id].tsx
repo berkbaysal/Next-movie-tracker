@@ -30,8 +30,9 @@ const Movie = ({ filmInfo, creditInfo }: IProps) => {
 export default Movie;
 
 export async function getServerSideProps(ctx: NextPageContext) {
+  const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.VERCEL_URL;
   const cookie = ctx.req?.headers.cookie;
-  const resFilmInfo = await fetch('http://localhost:3000/api/movie?id=' + ctx.query.id, {
+  const resFilmInfo = await fetch(URL + '/api/movie?id=' + ctx.query.id, {
     headers: {
       cookie: cookie!,
     },
@@ -39,7 +40,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
   validateResponse(await resFilmInfo, ctx);
   const jsonFilmInfo = await resFilmInfo.json();
 
-  const creditsInfo = await fetch('http://localhost:3000/api/credits?id=' + ctx.query.id, {
+  const creditsInfo = await fetch(URL + '/api/credits?id=' + ctx.query.id, {
     headers: {
       cookie: cookie!,
     },
@@ -50,7 +51,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
   let imageArray: PersonImages[] = [];
 
   const requests = jsonCreditsInfo.cast.map((castMember, index) =>
-    fetch('http://localhost:3000/api/personImage?id=' + jsonCreditsInfo.cast[index].id, {
+    fetch(URL + '/api/personImage?id=' + jsonCreditsInfo.cast[index].id, {
       headers: {
         cookie: cookie!,
       },
