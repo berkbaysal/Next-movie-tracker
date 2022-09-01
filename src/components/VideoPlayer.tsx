@@ -10,9 +10,6 @@ interface IProps {
 
 const VideoPlayer = ({ activePlayerRow, playerRow, activeVideoSrc, videoGrid }: IProps) => {
   let frame = null;
-  function updateFrame() {
-    frame = <iframe src={activeVideoSrc} />;
-  }
 
   function calculatePlayerSize() {
     const thumbnailHeight = parseInt(window.getComputedStyle(videoGrid.current?.firstChild).height);
@@ -23,6 +20,9 @@ const VideoPlayer = ({ activePlayerRow, playerRow, activeVideoSrc, videoGrid }: 
   }
 
   useEffect(() => {
+    function updateFrame() {
+      frame = <iframe src={activeVideoSrc} />;
+    }
     updateFrame();
   }, [activeVideoSrc]);
 

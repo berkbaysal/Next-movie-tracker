@@ -43,27 +43,31 @@ const CastSlider = ({ creditInfo }: IProps) => {
         break;
     }
   }
-  function computeSliderSettings() {
-    const sliderWidth = slidingImages.current?.offsetWidth; //width of entire section including buttons
-    const castMemberWidth = slidingImages.current?.firstChild.offsetWidth; //width of each member card
-    const castMemberMargin = parseInt(window.getComputedStyle(slidingImages.current.firstChild).margin); //margin on each side of each card
-    const buttonWidth = sliderWidth * 0.05; //width of each button to slide
-    const fullyVisibleImageCount = Math.floor((sliderWidth - buttonWidth) / (castMemberWidth + 2 * castMemberMargin)); //number of images in viewport including margins
-    const castMemberCount = creditInfo.cast.length; //total number of cards
-    const correctionFactor = castMemberCount % fullyVisibleImageCount === 0 ? 0 : (fullyVisibleImageCount - (castMemberCount % fullyVisibleImageCount)) * (castMemberWidth + castMemberMargin * 2); //correction for last slide position to not have gaps, if member count perfectly fits, no correction is needed.
-    const maxSlideSteps = Math.ceil(castMemberCount / fullyVisibleImageCount) - 1; //total number of possible slides counting initial state as step 0
-    const imageHeight = slidingImages.current?.firstChild.firstChild.offsetHeight; // height of image in each card, used to position arrows
-    setSlideStep({
-      slideStep: fullyVisibleImageCount * (castMemberWidth + 2 * castMemberMargin),
-      buttonWidth: buttonWidth,
-      maxSlideSteps: maxSlideSteps,
-      sliderWidth: sliderWidth,
-      correctionFactor: correctionFactor,
-      imageHeight: imageHeight,
-    });
-  }
-  const castDisplays = creditInfo.cast.map((castMember, index) => <CastDisplay castMember={castMember} key={`cast-member-${castMember.id}`} setFirstCastMemberHasLoaded={index === 1 ? setFirstCastMemberHasLoaded : null} />);
+
+  const castDisplays = creditInfo.cast.map((castMember, index) => (
+    <CastDisplay castMember={castMember} key={`cast-member-${castMember.id}`} setFirstCastMemberHasLoaded={index === 1 ? setFirstCastMemberHasLoaded : null} />
+  ));
   useEffect(() => {
+    function computeSliderSettings() {
+      const sliderWidth = slidingImages.current?.offsetWidth; //width of entire section including buttons
+      const castMemberWidth = slidingImages.current?.firstChild.offsetWidth; //width of each member card
+      const castMemberMargin = parseInt(window.getComputedStyle(slidingImages.current.firstChild).margin); //margin on each side of each card
+      const buttonWidth = sliderWidth * 0.05; //width of each button to slide
+      const fullyVisibleImageCount = Math.floor((sliderWidth - buttonWidth) / (castMemberWidth + 2 * castMemberMargin)); //number of images in viewport including margins
+      const castMemberCount = creditInfo.cast.length; //total number of cards
+      const correctionFactor = castMemberCount % fullyVisibleImageCount === 0 ? 0 : (fullyVisibleImageCount - (castMemberCount % fullyVisibleImageCount)) * (castMemberWidth + castMemberMargin * 2); //correction for last slide position to not have gaps, if member count perfectly fits, no correction is needed.
+      const maxSlideSteps = Math.ceil(castMemberCount / fullyVisibleImageCount) - 1; //total number of possible slides counting initial state as step 0
+      const imageHeight = slidingImages.current?.firstChild.firstChild.offsetHeight; // height of image in each card, used to position arrows
+      setSlideStep({
+        slideStep: fullyVisibleImageCount * (castMemberWidth + 2 * castMemberMargin),
+        buttonWidth: buttonWidth,
+        maxSlideSteps: maxSlideSteps,
+        sliderWidth: sliderWidth,
+        correctionFactor: correctionFactor,
+        imageHeight: imageHeight,
+      });
+    }
+
     setCurrentSlidePosition(0);
     computeSliderSettings();
   }, [creditInfo, firstCastMemberHasLoaded]);

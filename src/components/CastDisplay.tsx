@@ -10,14 +10,13 @@ interface IProps {
 const CastDisplay = ({ castMember, setFirstCastMemberHasLoaded }: IProps) => {
   const [imgSrc, setImgSrc] = useState<string>(null);
 
-  async function fetchImage(castId: number) {
-    const res = await fetch('/api/personImage?id=' + castId);
-    const json: PersonImages = await res.json();
-    json.profiles[0] ? setImgSrc(`https://image.tmdb.org/t/p/w200${json.profiles[0].file_path}`) : null;
-    setFirstCastMemberHasLoaded ? setFirstCastMemberHasLoaded(true) : null;
-  }
-
   useEffect(() => {
+    async function fetchImage(castId: number) {
+      const res = await fetch('/api/personImage?id=' + castId);
+      const json: PersonImages = await res.json();
+      json.profiles[0] ? setImgSrc(`https://image.tmdb.org/t/p/w200${json.profiles[0].file_path}`) : null;
+      setFirstCastMemberHasLoaded ? setFirstCastMemberHasLoaded(true) : null;
+    }
     setImgSrc(null);
     fetchImage(castMember.id);
   }, [castMember]);
