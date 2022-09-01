@@ -1,58 +1,54 @@
 import Router from 'next/router';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
 
-    const [authenticated, setAuthenticated] = useState<boolean>(false)
-
-    async function checkAuth() {
-        const res = await fetch("http://localhost:3000/api/checkAuth", {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        });
-        const resStatus = await res.status;
-        if (resStatus !== 200) { return false }
-        else { return true }
+  async function checkAuth() {
+    const res = await fetch('/api/checkAuth', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const resStatus = await res.status;
+    if (resStatus !== 200) {
+      return false;
+    } else {
+      return true;
     }
+  }
 
-    useEffect(() => {
-        async function redirect() {
-            const auth = await checkAuth()
-            if (Router.pathname !== "/login" && Router.pathname !== "/register") {
-                if (!auth) {
-                    Router.push("/login");
-                }
-                else {
-                    setAuthenticated(true);
-                }
-            }
-            else {
-                if (await checkAuth()) {
-                    Router.push("/home");
-                }
-                else {
-                    setAuthenticated(true);
-                }
-            }
+  useEffect(() => {
+    async function redirect() {
+      const auth = await checkAuth();
+      if (Router.pathname !== '/login' && Router.pathname !== '/register') {
+        if (!auth) {
+          Router.push('/login');
+        } else {
+          setAuthenticated(true);
         }
-        redirect();
-    }, [])
-
-
-    if (!authenticated) {
-        return <div>Loading...</div>
+      } else {
+        if (await checkAuth()) {
+          Router.push('/home');
+        } else {
+          setAuthenticated(true);
+        }
+      }
     }
+    redirect();
+  }, []);
 
-    return (
-        <div>
-            <Navbar />
-            <div style={{maxWidth:"1400px",margin:"auto"}}>
-                {children}
-            </div>   
-        </div>
-    )
-}
+  if (!authenticated) {
+    return <div>Loading...</div>;
+  }
 
-export default Layout
+  return (
+    <div>
+      <Navbar />
+      <div style={{ maxWidth: '1400px', margin: 'auto' }}>{children}</div>
+    </div>
+  );
+};
+
+export default Layout;
