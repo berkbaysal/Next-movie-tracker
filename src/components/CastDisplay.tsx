@@ -23,7 +23,7 @@ const CastDisplay = ({ castMember, setFirstCastMemberHasLoaded }: IProps) => {
 
   return (
     <div className={styles.castMember}>
-      <Image src={imgSrc ? imgSrc : defaultPersonImage} width={200} height={300} className={styles.castPicture} />
+      <Image src={imgSrc ? imgSrc : defaultPersonImage} width={200} height={300} className={styles.castPicture} alt={castMember.name + ' picture'} />
       <div className={styles.castName}>{castMember.name}</div>
       <div className={styles.characterName}>{castMember.character}</div>
     </div>
