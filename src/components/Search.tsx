@@ -34,32 +34,32 @@ const Search = ({ searchTerm, setSearchTerm }: IProps) => {
     }
   }
 
-  function updateSearchResults(queryRes: MultiSearchResult) {
-    if (!queryRes.results) {
-      return [];
-    }
-    const returnArray = queryRes.results.map((result, index) => {
-      if (isMovie(result)) {
-        if (index >= MAX_RESULTS_DISPLAYED) {
-          return;
-        }
-        return <SearchResultMovie result={result} handleRedirect={handleRedirect} />;
-      } else if (isTvShow(result)) {
-        if (index >= MAX_RESULTS_DISPLAYED) {
-          return;
-        }
-        return <SearchResultTvSeries result={result} />;
-      } else if (isPerson(result)) {
-        if (index >= MAX_RESULTS_DISPLAYED) {
-          return;
-        }
-        return <SearchResultPerson result={result} />;
-      }
-    });
-    return returnArray;
-  }
-
   useEffect(() => {
+    function updateSearchResults(queryRes: MultiSearchResult) {
+      if (!queryRes.results) {
+        return [];
+      }
+      const returnArray = queryRes.results.map((result, index) => {
+        if (isMovie(result)) {
+          if (index >= MAX_RESULTS_DISPLAYED) {
+            return;
+          }
+          return <SearchResultMovie result={result} handleRedirect={handleRedirect} />;
+        } else if (isTvShow(result)) {
+          if (index >= MAX_RESULTS_DISPLAYED) {
+            return;
+          }
+          return <SearchResultTvSeries result={result} />;
+        } else if (isPerson(result)) {
+          if (index >= MAX_RESULTS_DISPLAYED) {
+            return;
+          }
+          return <SearchResultPerson result={result} />;
+        }
+      });
+      return returnArray;
+    }
+
     async function handleSearch() {
       const res = await fetch('/api/search', {
         method: 'POST',

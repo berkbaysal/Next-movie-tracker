@@ -19,7 +19,7 @@ const CastDisplay = ({ castMember, setFirstCastMemberHasLoaded }: IProps) => {
     }
     setImgSrc(null);
     fetchImage(castMember.id);
-  }, [castMember]);
+  }, [castMember, setFirstCastMemberHasLoaded]);
 
   return (
     <div className={styles.castMember}>

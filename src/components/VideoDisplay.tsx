@@ -47,7 +47,7 @@ const VideoDisplay = ({ movieId }: IProps) => {
       }
     }
     if (videos) updateDisplayVideos();
-  }, [videos, activeVideoSrc]);
+  }, [videos, activeVideoSrc, activePlayerRow]);
 
   console.log(activePlayerRow, activeVideoSrc);
   return (
