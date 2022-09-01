@@ -8,7 +8,7 @@ export default authenticated(async function getPersonImage(req: NextApiRequest, 
     language: 'en-US',
     id: req.query.id,
   };
-  const fetchRes = await fetch(`https://api.themoviedb.org/3/person/${params.id}/images?api_key=${params.api_key}`);
+  const fetchRes = await fetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=${params.api_key}`);
   const json = await fetchRes.json();
   res.json(json);
 });

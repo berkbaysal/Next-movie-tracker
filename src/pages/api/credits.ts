@@ -3,7 +3,6 @@ import {authenticated} from "./checkAuth"
 require("dotenv").config()
 
  export default authenticated(async function getCredits(req:NextApiRequest,res:NextApiResponse){
-    console.log(req.query)
     const params = {
         api_key: process.env.MOVIE_DB_API_KEY,
         language: "en-US",

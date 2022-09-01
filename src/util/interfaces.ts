@@ -128,3 +128,19 @@ export interface PersonImages{
         width: number
     }[]
 }
+export interface MovieVideos{
+    id: number
+    results:MovieVideoResult[]
+}
+export interface MovieVideoResult{
+        iso_639_1: string
+        iso_3166_1: string
+        name: string
+        key: string
+        site: string
+        size: number
+        type: string
+        official: boolean
+        published_at: string
+        id: string
+}

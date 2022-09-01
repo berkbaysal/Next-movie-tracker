@@ -1,0 +1,70 @@
+.gridContainer {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+.video {
+  position: relative;
+}
+.videoThumbnail {
+  position: relative;
+}
+.playButton {
+  position: absolute;
+  font-size: 2.5rem;
+  left: 50%;
+  top: 50%;
+  background-color: #f25c05;
+  color: white;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.activePlayerContainer {
+  grid-column: 1/5;
+  width: 100%;
+  background-color: #f25c05;
+  display: flex;
+  justify-content: center;
+  padding: 0rem 0;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.activePlayer {
+  border: none;
+}
+
+@keyframes collapse {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes expand {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

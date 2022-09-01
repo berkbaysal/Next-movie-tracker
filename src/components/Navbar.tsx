@@ -18,6 +18,7 @@ const Navbar = () => {
     <nav className={styles.navbarContainer}>
       <div className={styles.searchBarWrapper}
         onFocus={() => setSearchResultsVisible(true)}
+        onBlur={() => setTimeout(()=>setSearchResultsVisible(false),500)}
         >
         <ThemeProvider theme={searchBarTheme}>
           <TextField variant='outlined'
