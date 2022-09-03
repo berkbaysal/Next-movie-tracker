@@ -71,7 +71,6 @@ const CastSlider = ({ creditInfo }: IProps) => {
     setCurrentSlidePosition(0);
     computeSliderSettings();
   }, [creditInfo, firstCastMemberHasLoaded]);
-  console.log(slideStep);
   return (
     <div className={styles.castContainer}>
       <div className={sharedStyles.sectionTitle}>Cast:</div>

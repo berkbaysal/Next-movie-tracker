@@ -49,7 +49,6 @@ const VideoDisplay = ({ movieId }: IProps) => {
     if (videos) updateDisplayVideos();
   }, [videos, activeVideoSrc, activePlayerRow]);
 
-  console.log(activePlayerRow, activeVideoSrc);
   return (
     <>
       <div className={sharedStyles.sectionTitle}>Videos:</div>
