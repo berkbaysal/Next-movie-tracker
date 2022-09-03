@@ -30,10 +30,7 @@ const Movie = ({ filmInfo, creditInfo }: IProps) => {
 export default Movie;
 
 export async function getServerSideProps(ctx: NextPageContext) {
-  const URL =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000'
-      : 'https://' + (process.env.NEXT_PUBLIC_VERCEL_URL ? process.env.NEXT_PUBLIC_VERCEL_URL : process.env.NEXT_PUBLIC_RAILWAY_STATIC_URL);
+  const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://' + process.env.NEXT_PUBLIC_RAILWAY_STATIC_URL;
   const cookie = ctx.req?.headers.cookie;
   const resFilmInfo = await fetch(URL + '/api/movie?id=' + ctx.query.id, {
     headers: {
