@@ -27,25 +27,28 @@ const VideoDisplay = ({ movieId }: IProps) => {
   }
 
   useEffect(() => {
+    setActivePlayerRow(null);
+    setActiveVideoSrc(null);
     fetchVideos(movieId);
   }, [movieId]);
 
-  useEffect(() => {
-    function updateDisplayVideos() {
-      if (videos && videos.results?.length > 0) {
-        let displayVideos = [];
-        const videosPerRow = getVideosPerRow();
-        videos.results.forEach((result, index) => {
-          if (index % videosPerRow === 0 && index !== 0) {
-            displayVideos.push(<VideoPlayer activePlayerRow={activePlayerRow} activeVideoSrc={activeVideoSrc} playerRow={index / videosPerRow} videoGrid={videoGrid} />);
-          }
-          displayVideos.push(
-            <Video result={result} key={'video-result-' + index} videoRow={Math.floor(index / videosPerRow)} setActivePlayerRow={setActivePlayerRow} setActiveVideoSrc={setActiveVideoSrc} />
-          );
-        });
-        setVideosDisplay(displayVideos);
-      }
+  function updateDisplayVideos() {
+    if (videos && videos.results?.length > 0) {
+      let displayVideos = [];
+      const videosPerRow = getVideosPerRow();
+      videos.results.forEach((result, index) => {
+        if (index % videosPerRow === 0 && index !== 0) {
+          displayVideos.push(<VideoPlayer activePlayerRow={activePlayerRow} activeVideoSrc={activeVideoSrc} playerRow={index / videosPerRow} videoGrid={videoGrid} />);
+        }
+        displayVideos.push(
+          <Video result={result} key={'video-result-' + index} videoRow={Math.floor(index / videosPerRow)} setActivePlayerRow={setActivePlayerRow} setActiveVideoSrc={setActiveVideoSrc} />
+        );
+      });
+      setVideosDisplay(displayVideos);
     }
+  }
+
+  useEffect(() => {
     if (videos) updateDisplayVideos();
   }, [videos, activeVideoSrc, activePlayerRow]);
 
