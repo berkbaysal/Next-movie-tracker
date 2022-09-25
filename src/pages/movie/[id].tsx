@@ -3,7 +3,6 @@ import React from 'react';
 import InfoTopDisplay from '../../components/InfoTopDisplay';
 import Layout from '../../components/Layout';
 import { MovieData, CreditsData, PersonImages } from '../../util/interfaces';
-import { validateResponse } from '../../util/utilFunctions';
 import CastSlider from '../../components/CastSlider';
 import VideoDisplay from '../../components/VideoDisplay';
 
