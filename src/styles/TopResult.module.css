@@ -1,0 +1,15 @@
+.backgroundContainer {
+  width: 100%;
+  display: flex;
+  background-color: var(--primary);
+  position: relative;
+  overflow: hidden;
+}
+.container {
+  width: 100%;
+}
+.posterWrapper {
+  position: relative;
+  height: 600px;
+  width: 400px;
+}

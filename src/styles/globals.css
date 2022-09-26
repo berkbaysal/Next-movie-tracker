@@ -1,4 +1,6 @@
-html,
+:root {
+  --primary: #f25c05;
+}
 body {
   padding: 0;
   margin: 0;

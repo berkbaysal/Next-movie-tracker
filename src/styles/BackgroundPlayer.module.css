@@ -1,0 +1,22 @@
+.videoPlayer {
+  position: absolute;
+  padding: 0;
+  border: none;
+  width: 100vw;
+  height: calc(100vw / 16 * 9);
+  object-fit: contain;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.videoPlayerOverlay {
+  position: absolute;
+  background-color: var(--primary);
+  padding: 0;
+  border: none;
+  width: 100vw;
+  height: calc(100vw / 16 * 9);
+  object-fit: contain;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+}

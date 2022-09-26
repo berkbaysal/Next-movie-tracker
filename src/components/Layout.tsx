@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <div style={{ maxWidth: '1400px', margin: 'auto' }}>{children}</div>
+      {children}
     </div>
   );
 };
