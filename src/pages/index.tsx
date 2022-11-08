@@ -10,7 +10,7 @@ interface IProps {
 const Home: NextPage = ({ trending }: IProps) => {
   return (
     <Layout>
-      <TopTrending topResult={trending.results[12]} />
+      <TopTrending topResult={trending.results[17]} />
     </Layout>
   );
 };

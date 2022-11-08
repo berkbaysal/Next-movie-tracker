@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const Video = ({ result, videoRow, setActivePlayerRow, setActiveVideoSrc }: IProps) => {
-  const thumbnail = `https://img.youtube.com/vi/${result.key}/maxresdefault.jpg`;
+  const thumbnail = `https://i.ytimg.com/vi/${result.key}/mqdefault.jpg`;
   const src = `https://www.youtube.com/embed/${result.key}?color=white`;
 
   return (

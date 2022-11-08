@@ -1,4 +1,5 @@
 .backgroundContainer {
+  max-width: 100%;
   width: 100%;
   display: flex;
   background-color: var(--primary);
@@ -8,8 +9,21 @@
 .container {
   width: 100%;
 }
+.content {
+  position: relative;
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  padding: 3rem 0;
+}
 .posterWrapper {
   position: relative;
   height: 600px;
   width: 400px;
+}
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: white;
+  margin-left: 3rem;
 }

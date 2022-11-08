@@ -8,6 +8,7 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .videoPlayerOverlay {
   position: absolute;
   background-color: var(--primary);
@@ -18,5 +19,5 @@
   object-fit: contain;
   top: 50%;
   transform: translateY(-50%);
-  opacity: 0.6;
+  opacity: 0.7;
 }

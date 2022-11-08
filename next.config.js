@@ -8,6 +8,6 @@ module.exports = nextConfig;
 
 module.exports = {
   images: {
-    domains: ['www.themoviedb.org', 'image.tmdb.org', 'img.youtube.com'],
+    domains: ['www.themoviedb.org', 'image.tmdb.org', 'img.youtube.com', 'i.ytimg.com'],
   },
 };
