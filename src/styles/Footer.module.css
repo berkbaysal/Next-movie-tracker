@@ -1,0 +1,15 @@
+.footerContainer {
+  background-color: var(--primary);
+  width: 100%;
+  min-height: 10rem;
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+.footerContent {
+  background-color: black;
+  height: 100%;
+
+  width: min(100%, var(--content-width-limit));
+  margin: auto;
+}

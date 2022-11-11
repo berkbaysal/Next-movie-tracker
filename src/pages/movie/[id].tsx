@@ -29,7 +29,7 @@ const Movie = ({ filmInfo, creditInfo }: IProps) => {
 export default Movie;
 
 export async function getServerSideProps(ctx: NextPageContext) {
-  const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://' + 'next-movie-tracker-production.up.railway.app';
+  const URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.URL;
   const cookie = ctx.req?.headers.cookie;
   const resFilmInfo = await fetch(URL + '/api/movie?id=' + ctx.query.id, {
     headers: {
